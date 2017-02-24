@@ -51,11 +51,10 @@ let showCheckpoint = (checkpoint, index) => {
 
 let run = () => {
   let checkpoints = checkpointsService.getCheckpoints();
-  for (var i = 0; i < checkpoints.length; i++) {
-    let checkpoint = checkpoints[i];
-    transformCheckpoint(checkpoint);
-    showCheckpoint(checkpoint, i);
-  }
+  checkpoints.map((checkpoint, index) => {
+    let transformedCheckpoint = transformCheckpoint(checkpoint);
+    showCheckpoint(transformedCheckpoint, index);
+  });
 };
 
 module.exports = {
