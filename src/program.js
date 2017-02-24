@@ -42,7 +42,16 @@ let transformCheckpoint = (checkpoint) => {
 
 let showCheckpoint = (checkpoint, index) => {
   console.log(chalk.green('CHECKPOINT'), chalk.yellow(index + 1));
-  _.map(checkpoint, (property, key) => console.log(chalk.cyan(key.toUpperCase()), property));
+  _.map(checkpoint, (property, key) => {
+    if(key == 'distance' && property >= 1) {
+      console.log(chalk.cyan(key.toUpperCase()), `$property m`);
+    } else if(key == 'distance' && property < 1) {
+      let prop = property * 100;
+      console.log(chalk.cyan(key.toUpperCase()), `$prop cm`);
+    } else {
+      console.log(chalk.cyan(key.toUpperCase()), property)
+    }
+  });
 
   console.log('\n');
 };
