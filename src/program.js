@@ -19,20 +19,22 @@ let calculateDistanceWithRssi = rssi => {
 
 let transformCheckpoint = (checkpoint) => {
   if (checkpoint) {
+    var param = (JSON.parse(JSON.stringify(checkpoint)));
+    console.log(checkpoint);
     // Get back essential properties
-    checkpoint.serviceData = checkpoint.advertisement.serviceData;
-    checkpoint.serviceUuids = checkpoint.advertisement.serviceUuids;
+    param.serviceData = param.advertisement.serviceData;
+    param.serviceUuids = param.advertisement.serviceUuids;
     // Transform data about distance
-    checkpoint.distance = calculateDistanceWithRssi(checkpoint.rssi);
+    param.distance = calculateDistanceWithRssi(param.rssi);
     // Clean uninteresting properties
-    delete checkpoint.id;
-    delete checkpoint.address;
-    delete checkpoint.addressType;
-    delete checkpoint.advertisement;
-    delete checkpoint.rssi;
-    delete checkpoint.services;
+    delete param.id;
+    delete param.address;
+    delete param.addressType;
+    delete param.advertisement;
+    delete param.rssi;
+    delete param.services;
     // Everything is ok
-    return true;
+    return param;
   } else {
     return false;
   }

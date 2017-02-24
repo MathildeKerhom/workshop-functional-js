@@ -27,8 +27,12 @@ describe('Function transformCheckpoint', function() {
     expect(transformCheckpoint()).to.be.false;
   });
 
-  it('Function transformCheckpoint with parameter should return mutated parameter', function() {
+  it('Function transformCheckpoint with parameter should return a mutated object', function() {
     expect(transformCheckpoint(exampleParameter)).to.not.eql(exampleParameter);
+  });
+
+  it('Function transformCheckpoint with parameter should return an object with different reference', function() {
+    expect(transformCheckpoint(exampleParameter)).to.not.equal(exampleParameter);
   });
 
 });
