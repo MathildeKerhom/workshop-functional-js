@@ -20,7 +20,6 @@ let calculateDistanceWithRssi = rssi => {
 let transformCheckpoint = (checkpoint) => {
   if (checkpoint) {
     var param = (JSON.parse(JSON.stringify(checkpoint)));
-    console.log(checkpoint);
     // Get back essential properties
     param.serviceData = param.advertisement.serviceData;
     param.serviceUuids = param.advertisement.serviceUuids;
